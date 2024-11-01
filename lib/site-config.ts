@@ -1,4 +1,4 @@
-import * as types from './types'
+import type * as types from './types'
 
 export interface SiteConfig {
   author: string
@@ -9,7 +9,7 @@ export interface SiteConfig {
   newsletter?: string
   youtube?: string
   zhihu?: string
-  mastodon?: string;
+  mastodon?: string
   buymeacoffee?: string;
 
   defaultPageIcon?: string | null

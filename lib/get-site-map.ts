@@ -1,8 +1,8 @@
-import { getAllPagesInSpace, uuidToId, getPageProperty } from 'notion-utils'
+import { getAllPagesInSpace, getPageProperty, uuidToId } from 'notion-utils'
 import pMemoize from 'p-memoize'
 
+import type * as types from './types'
 import * as config from './config'
-import * as types from './types'
 import { includeNotionIdInUrls } from './config'
 import { getCanonicalPageId } from './get-canonical-page-id'
 import { notion } from './notion-api'
@@ -24,6 +24,11 @@ export async function getSiteMap(): Promise<types.SiteMap> {
 const getAllPages = pMemoize(getAllPagesImpl, {
   cacheKey: (...args) => JSON.stringify(args)
 })
+
+const getPage = async (pageId: string, ...args) => {
+  console.log('\nnotion getPage', uuidToId(pageId))
+  return notion.getPage(pageId, ...args)
+}
 
 async function getAllPagesImpl(
   rootNotionPageId: string,
@@ -47,7 +52,9 @@ async function getAllPagesImpl(
       }
 
       const block = recordMap.block[pageId]?.value
-      if (!(getPageProperty<boolean|null>('Public', block, recordMap) ?? true)) {
+      if (
+        !(getPageProperty<boolean | null>('Public', block, recordMap) ?? true)
+      ) {
         return map
       }
 
