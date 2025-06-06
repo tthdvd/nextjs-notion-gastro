@@ -37,7 +37,12 @@ const getPage = async (pageId: string, opts?: any) => {
 
 async function getAllPagesImpl(
   rootNotionPageId: string,
-  rootNotionSpaceId?: string
+  rootNotionSpaceId?: string,
+  {
+    maxDepth = 1
+  }: {
+    maxDepth?: number
+  } = {}
 ): Promise<Partial<types.SiteMap>> {
   const getPage = async (pageId: string, ...args) => {
     return notion.getPage(pageId, ...args)
@@ -46,7 +51,10 @@ async function getAllPagesImpl(
   const pageMap = await getAllPagesInSpace(
     rootNotionPageId,
     rootNotionSpaceId,
-    getPage
+    getPage,
+    {
+      maxDepth
+    }
   )
 
   const canonicalPageMap = Object.keys(pageMap).reduce(
