@@ -37,12 +37,7 @@ export default async function OGImage(
       error: pageInfoOrError.error.message
     })
   }
-  const pageInfo: NotionPageInfo = await pageInfoRes.json()
-
-  const [interRegularFont, interBoldFont] = await Promise.all([
-    interRegularFontP,
-    interBoldFontP
-  ])
+  const pageInfo = pageInfoOrError.data
 
   return new ImageResponse(
     <div

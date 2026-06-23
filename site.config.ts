@@ -1,7 +1,6 @@
 import { siteConfig } from './lib/site-config'
 
 export default siteConfig({
-
   // basic site info (required)
   author: 'David Toth',
 
@@ -13,12 +12,12 @@ export default siteConfig({
   buymeacoffee: 'https://www.buymeacoffee.com/tthdvd',
   // newsletter: '#', // optional newsletter URL
   // youtube: '#', // optional youtube channel name or `channel/UCGbXXXXXXXXXXXXXXXXXXXXXX`
-
   // default notion icon and cover images for site-wide consistency (optional)
   // page-specific values will override these site-wide defaults
   defaultPageIcon: null,
   defaultPageCover: null,
   defaultPageCoverPosition: 0.5,
+
 
   // whether or not to enable support for LQIP preview images (optional)
   isPreviewImageSupportEnabled: true,
@@ -52,4 +51,8 @@ export default siteConfig({
   //     pageId: '6a29ebcb935a4f0689fe661ab5f3b8d1'
   //   }
   // ]
+  ,
+  rootNotionPageId: '15c6761743434430a3f77b971be3c45c',
+  name: 'Gastro',
+  domain: 'https://gastro.tthdvd.com'
 })

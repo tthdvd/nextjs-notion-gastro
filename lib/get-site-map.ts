@@ -30,16 +30,6 @@ const getAllPages = pMemoize(getAllPagesImpl, {
   cacheKey: (...args) => JSON.stringify(args)
 })
 
-const getPage = async (pageId: string, opts?: any) => {
-  console.log('\nnotion getPage', uuidToId(pageId))
-  return notion.getPage(pageId, {
-    kyOptions: {
-      timeout: 30_000
-    },
-    ...opts
-  })
-}
-
 async function getAllPagesImpl(
   rootNotionPageId: string,
   rootNotionSpaceId?: string,
@@ -49,7 +39,7 @@ async function getAllPagesImpl(
     maxDepth?: number
   } = {}
 ): Promise<Partial<types.SiteMap>> {
-  const getPage = async (pageId: string, ...args) => {
+  const getPage = async (pageId: string, ...args: any[]) => {
     return notion.getPage(pageId, ...args)
   }
 

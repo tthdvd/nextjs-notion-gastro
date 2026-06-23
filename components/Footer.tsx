@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { SiBuymeacoffee } from '@react-icons/all-files/si/SiBuymeacoffee'
+import { SiBuymeacoffee } from "react-icons/si";
 
 import * as config from '@/lib/config'
 import { GitHubIcon } from '@/lib/icons/github'
